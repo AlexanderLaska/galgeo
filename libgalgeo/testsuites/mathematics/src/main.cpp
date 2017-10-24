@@ -24,7 +24,7 @@ int main()
   const unsigned int dimension{3};
   set_dimension(dimension);
 
-  std::cout << "TEST!" << std::endl;
+  std::cout << "TEST" << std::endl;
   
   return 0;
 }
