@@ -1,0 +1,21 @@
+# Ignore the lib dirs' content
+**/lib/*
+
+# Ignore the bin dirs' content
+**/bin/*
+
+# Ignore the obj dirs' content
+**/obj/*
+
+# Ignore the output dirs' content (pictures, data, ...)
+**/output/*
+
+# Ignore the vim swap and undo files
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-v][a-z]
+[._]sw[a-p]
+[._]*.un~
+
+# Ignore Mac specific files
+.DS_Store
