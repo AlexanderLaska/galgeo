@@ -225,7 +225,7 @@ namespace galgeo
     return result;
   }
 
-  // Test whether a point is the center of a biquadric
+  // Test whether a point is the center of a pair of quadrics
   bool is_center(GaloisOneZeroTensor& center_point, std::vector<GaloisZeroTwoTensor>& biquadric, std::vector<GaloisOneZeroTensor>& points, std::vector<GaloisZeroOneTensor>& hyperplanes)
   {
     std::vector<GaloisZeroOneTensor> hyperplanes_through_center{set_of_objects_incident_with<GaloisOneZeroTensor, GaloisZeroOneTensor>(center_point, hyperplanes)};

@@ -16,7 +16,7 @@
 
 #include <FiniteProjectiveGeometry.hpp>
 
-using namespace galois;
+using namespace galgeo;
 
 
 int main(int argc, char *argv[]) {

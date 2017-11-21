@@ -533,13 +533,13 @@ namespace galgeo
     return is;
   }
 
-  std::ostream& operator<<(std::ostream& os, const GaloisZeroTwoTensor& one_one_tensor_output)
+  std::ostream& operator<<(std::ostream& os, const GaloisZeroTwoTensor& zero_two_tensor_output)
   {
     for(unsigned int i=0; i<GaloisZeroTwoTensor::dimension; i++)
     {
       for(unsigned int j=0; j<GaloisZeroTwoTensor::dimension; j++)
       {
-        os << one_one_tensor_output.components[i][j];
+        os << zero_two_tensor_output.components[i][j];
         std::cout << " ";
       }
       std::cout << "\n";

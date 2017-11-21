@@ -8,7 +8,7 @@ namespace galgeo
 {
 
   // Initialize the value as the prime number of the GaloisScalar class
-  unsigned int GaloisOneZeroTensor::dimension = 5;
+  unsigned int GaloisOneZeroTensor::dimension = 3;
 
   // Standard Constructor (choosing a dimension of three corresponding to the projective plane)
   GaloisOneZeroTensor::GaloisOneZeroTensor()

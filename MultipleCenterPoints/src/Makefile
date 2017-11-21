@@ -12,11 +12,11 @@ BINPATH=../bin
 INC=
 SRC=$(SRCPATH)/main.cpp
 OBJ=$(OBJPATH)/main.o
-OUT=$(BINPATH)/LineConvolution
+OUT=$(BINPATH)/MultipleCenterPoints
 
 INCLUDES= -I $(INCPATH)
 LIBRARIES= -L $(LIBPATH)
-LIB= -lgalgeo 
+LIB= -lgalgeo
 
 
 default: $(OUT)
