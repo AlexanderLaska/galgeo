@@ -100,11 +100,11 @@ int main(int argc, char *argv[]) {
   std::vector<std::vector<GaloisOneZeroTensor> > centerPointSets;
   std::vector<GaloisOneZeroTensor> emptyPointSet;
   size_t n{0};
+  bool areThereNoCenterPoints{true};
   for (size_t k{0}; k < allQuadrics.size(); ++k) {
     for (size_t l{k+1}; l < allQuadrics.size(); ++l) {
       pair[0] = allQuadrics[k];
       pair[1] = allQuadrics[l];
-      bool areThereNoCenterPoints{true};
       for (GaloisOneZeroTensor centerPointCandidate : points) {
         if (is_center(centerPointCandidate, pair, points, hyperplanes)) {
           if (areThereNoCenterPoints) {
@@ -113,17 +113,19 @@ int main(int argc, char *argv[]) {
           }
           centerPointSets[n].push_back(centerPointCandidate);
         }
-        if (areThereNoCenterPoints == false) {
-          biquadrics.push_back(pair);
-          ++n;
-          areThereNoCenterPoints = true;
-        }
+      }
+      if (areThereNoCenterPoints == false) {
+        biquadrics.push_back(pair);
+        ++n;
+        areThereNoCenterPoints = true;
       }
     }
+    areThereNoCenterPoints = true;
   }
 
   size_t degeneracyCount{0};
   size_t biquadricCount{0};
+  size_t moreThanTwoCount{0};
   for (std::vector<GaloisZeroTwoTensor> biquadric : biquadrics) {
     std::cout << "Biquadric:\n---\n" << biquadric[0] << "\n" << biquadric[1] << "---" << std::endl;
     for (GaloisOneZeroTensor point : centerPointSets[biquadricCount]) {
@@ -132,10 +134,15 @@ int main(int argc, char *argv[]) {
     if (centerPointSets[biquadricCount].size() > 1) {
       ++degeneracyCount;
     }
+    if (centerPointSets[biquadricCount].size() > 2) {
+      ++moreThanTwoCount;
+    }
     ++biquadricCount;
   }
 
   std::cout << "Biquadrics with more than one center point: " << degeneracyCount << std::endl;
+  std::cout << "Biquadrics with more than two center point: " << moreThanTwoCount << std::endl;
+  std::cout << "#Biquadrics = " << biquadricCount << std::endl;
   non_squares.close();
 
   return 0;

@@ -540,9 +540,9 @@ namespace galgeo
       for(unsigned int j=0; j<GaloisZeroTwoTensor::dimension; j++)
       {
         os << zero_two_tensor_output.components[i][j];
-        std::cout << " ";
+        os << " ";
       }
-      std::cout << "\n";
+      os << "\n";
     }
 
     return os;

@@ -20,6 +20,11 @@ namespace galgeo
   }
 
 
+  // Dehomogenization map (works only for dim =2)
+  std::vector<std::vector<int> > dehomogenize(GaloisOneZeroTensor& point1, GaloisOneZeroTensor& point2, GaloisZeroTwoTensor& quadric) {
+
+  }
+
   // Generate a set of translation matrices
   std::vector<GaloisOneOneTensor> produce_translation_set(const unsigned int& number_of_points, const unsigned int& dimension, const unsigned int& prime_number)
   {
