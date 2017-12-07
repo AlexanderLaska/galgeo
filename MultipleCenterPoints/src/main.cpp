@@ -57,11 +57,11 @@ int main(int argc, char *argv[]) {
 
   std::vector<GaloisZeroTwoTensor> allQuadrics;
   GaloisZeroTwoTensor quadric;
-  for (int a{0}; a<primeNumber-1; ++a) {
-    for (int b{0}; b<primeNumber-1; ++b) {
-      for (int c{0}; c<primeNumber-1; ++c) {
-        for (int d{0}; d<primeNumber-1; ++d) {
-          for (int e{0}; e<primeNumber-1; ++e) {
+  for (int a{0}; a<primeNumber; ++a) {
+    for (int b{0}; b<primeNumber; ++b) {
+      for (int c{0}; c<primeNumber; ++c) {
+        for (int d{0}; d<primeNumber; ++d) {
+          for (int e{0}; e<primeNumber; ++e) {
             quadric[0][0] = a; quadric[1][0] = b; quadric[2][0] = c;
             quadric[0][1] = b; quadric[1][1] = d; quadric[2][1] = e;
             quadric[0][2] = c; quadric[1][2] = e; quadric[2][2] = 1;
@@ -126,6 +126,8 @@ int main(int argc, char *argv[]) {
   size_t degeneracyCount{0};
   size_t biquadricCount{0};
   size_t moreThanTwoCount{0};
+  size_t moreThanThreeCount{0};
+  size_t moreThanFourCount{0};
   for (std::vector<GaloisZeroTwoTensor> biquadric : biquadrics) {
     std::cout << "Biquadric:\n---\n" << biquadric[0] << "\n" << biquadric[1] << "---" << std::endl;
     for (GaloisOneZeroTensor point : centerPointSets[biquadricCount]) {
@@ -137,11 +139,19 @@ int main(int argc, char *argv[]) {
     if (centerPointSets[biquadricCount].size() > 2) {
       ++moreThanTwoCount;
     }
+    if (centerPointSets[biquadricCount].size() > 3) {
+      ++moreThanThreeCount;
+    }
+    if (centerPointSets[biquadricCount].size() > 4) {
+      ++moreThanFourCount;
+    }
     ++biquadricCount;
   }
 
   std::cout << "Biquadrics with more than one center point: " << degeneracyCount << std::endl;
   std::cout << "Biquadrics with more than two center point: " << moreThanTwoCount << std::endl;
+  std::cout << "Biquadrics with more than three center point: " << moreThanThreeCount << std::endl;
+  std::cout << "Biquadrics with more than four center point: " << moreThanFourCount << std::endl;
   std::cout << "#Biquadrics = " << biquadricCount << std::endl;
   non_squares.close();
 
