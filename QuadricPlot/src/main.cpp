@@ -64,11 +64,17 @@ int main(int argc, char *argv[]) {
   std::vector<GaloisOneZeroTensor> pointsOfM{points_in_quadric(M, allPoints)};
   std::vector<GaloisOneZeroTensor> pointsOfMbar{points_in_quadric(Mbar, allPoints)};
 
+  GaloisZeroTwoTensor Mdual{M.get_inverse()}, Mdualbar{Mbar.get_inverse()};
+
   std::vector<GaloisZeroTwoTensor> quadricPair;
   quadricPair.push_back(M);
   quadricPair.push_back(Mbar);
-  points << "The pair of quadrics\n\n" << M << "\n" << Mbar << "\n\n" << "is a biquadric with respect to these center points:\n\n";
-  std::vector<GaloisOneZeroTensor> allCenterPoints;
+  std::vector<GaloisZeroTwoTensor> dualQuadricPair;
+  dualQuadricPair.push_back(Mdual);
+  dualQuadricPair.push_back(Mdualbar);
+
+  points << "The pair of quadrics\n\n" << M << "\n" << Mbar << "\n\n" << "with its dual pair of quadrics\n\n" << Mdual << "\n" << Mdualbar << "\n\n" << "is a biquadric with respect to these center points:\n\n";
+  std::vector<GaloisOneZeroTensor> allCenterPoints, alldualCenterPoints;
   std::vector<std::vector<GaloisZeroOneTensor> > allHyperplanesThroughCenters;
   for (GaloisOneZeroTensor point : allPoints) {
     if (is_center(point, quadricPair, allPoints, allHyperplanes)) {
@@ -76,6 +82,10 @@ int main(int argc, char *argv[]) {
       allCenterPoints.push_back(point);
       allHyperplanesThroughCenters.push_back(set_of_objects_incident_with(point, allHyperplanes));
     }
+  }
+  points << "\n and all dual polars:\n\n";
+  for (GaloisOneZeroTensor point : allCenterPoints) {
+    points << M*point << "\n" << Mbar*point << "\n";
   }
 
   points << "Points of M:\n";

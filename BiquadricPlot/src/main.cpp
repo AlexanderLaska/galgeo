@@ -54,16 +54,20 @@ int main(int argc, char *argv[]) {
   GaloisScalar zero{0}; GaloisScalar one{1};
 
 
-  for(int x{squaresCardinality}; x>-squaresCardinality-1; --x) {
-    for(int y{-squaresCardinality}; y<squaresCardinality+1; ++y) {
+  // Quadratic Platting!!! Undo!!
+  for(int x{0}; x<primeNumber+1; ++x) {
+    for(int y{0}; y<primeNumber+1; ++y) {
       if(((x*x)*m11 + 2*((y*x)*m12) + (y*y)*m22 + one) == zero) {
-        q << x << "\t" << y << std::endl;
+        GaloisScalar x_sq{x*x}, y_sq{y*y};
+        q << x_sq << "\t" << y_sq << std::endl;
       }
       if(((x*x)*m11 + 2*((y*x)*m12) + (y*y)*m22 + nonSquares[std::atoi(argv[5])]) == zero) {
-        q_bar << x << "\t" << y << std::endl;
+        GaloisScalar x_sq{x*x}, y_sq{y*y};
+        q_bar << x_sq << "\t" << y_sq << std::endl;
       }
       if(((x*x)*m11 + 2*((y*x)*m12) + (y*y)*m22 + nonSquares[std::atoi(argv[6])]) == zero) {
-        q_bar2 << x << "\t" << y << std::endl;
+        GaloisScalar x_sq{x*x}, y_sq{y*y};
+        q_bar2 << x_sq << "\t" << y_sq << std::endl;
       }
       background << x << "\t" << y << std::endl;
     }

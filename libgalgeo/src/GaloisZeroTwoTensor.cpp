@@ -439,6 +439,7 @@ namespace galgeo
     }
   }
 
+  */
   // Test whether the matrix is singular
   bool GaloisZeroTwoTensor::is_invertible()
   {
@@ -461,9 +462,6 @@ namespace galgeo
     if(determinant != 0)
     {
       GaloisZeroTwoTensor result;
-      GaloisScalar inverse_of_determinant;
-
-      inverse_of_determinant = determinant.get_inverse();
 
       for(unsigned int i=0; i<dimension; i++)
       {
@@ -501,11 +499,11 @@ namespace galgeo
 
           if((i+j)%2 == 0)
           {
-            result[j][i] = (+1)*inverse_of_determinant*(determinant_of_matrix(minor));
+            result[j][i] = +determinant_of_matrix(minor);
           }
           else
           {
-            result[j][i] = (-1)*inverse_of_determinant*(determinant_of_matrix(minor));
+            result[j][i] = -determinant_of_matrix(minor);
           }
         }
       }
@@ -516,7 +514,6 @@ namespace galgeo
       return *this;
     }
   }
-  */
 
   // Binary operators for assigning or reading the values via iostream
   std::istream& operator>>(std::istream& is, GaloisZeroTwoTensor& one_one_tensor_input)

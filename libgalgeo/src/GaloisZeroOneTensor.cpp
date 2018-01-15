@@ -329,9 +329,9 @@ namespace galgeo
     for(unsigned int i=0; i<GaloisOneZeroTensor::dimension; i++)
     {
       os << covector_output.components[i];
-      std::cout << " ";
+      os << "\n";
     }
-      std::cout << "\n";
+      os << "\n";
 
     return os;
   }
