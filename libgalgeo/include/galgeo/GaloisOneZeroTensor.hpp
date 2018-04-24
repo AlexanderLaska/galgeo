@@ -29,7 +29,7 @@ namespace galgeo
 
       // Binary operator for the assignment of another GaloisOneZeroTensor or std:: vector (rhs)
       GaloisOneZeroTensor& operator=(const GaloisOneZeroTensor& rhs);
-      GaloisOneZeroTensor& operator=(const std::vector<unsigned int>& rhs);
+      GaloisOneZeroTensor& operator=(const std::vector<int>& rhs);
 
       // Binary operations for a GaloisOneZeroTensor on the right hand side (rhs)
       GaloisOneZeroTensor operator+(const GaloisOneZeroTensor& rhs);

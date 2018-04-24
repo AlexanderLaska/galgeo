@@ -452,26 +452,26 @@ namespace galgeo
     std::vector<GaloisOneZeroTensor> points;
     points.resize(number_of_points);
  
-    unsigned int i{0};
-    for(unsigned int number_of_zeros=0; number_of_zeros<dimension; number_of_zeros++)
+    int i{0};
+    for(int number_of_zeros=0; number_of_zeros<dimension; number_of_zeros++)
     {
-      std::vector<std::vector<unsigned int> > same_number_of_zeros;
+      std::vector<std::vector<int> > same_number_of_zeros;
       same_number_of_zeros.resize(1);
       same_number_of_zeros[0].resize(number_of_zeros + 1);
  
-      for(unsigned int j=0; j<number_of_zeros; j++)
+      for(int j=0; j<number_of_zeros; j++)
       {
         same_number_of_zeros[0][j] = 0;
       }
  
       same_number_of_zeros[0][number_of_zeros] = 1;
  
-      for(unsigned int j=number_of_zeros+1; j<dimension; j++)
+      for(int j=number_of_zeros+1; j<dimension; j++)
       {
         same_number_of_zeros = add_layer(same_number_of_zeros, prime_number);
       }
  
-      for(unsigned int j=0; j<same_number_of_zeros.size(); j++)
+      for(int j=0; j<same_number_of_zeros.size(); j++)
       {
  
         points[i] = same_number_of_zeros[j];
@@ -501,19 +501,19 @@ namespace galgeo
 
   
   // Adds a layer of prime numbers (cartesian product of a given old_list with the Galois field)
-  std::vector<std::vector<unsigned int> > add_layer(std::vector<std::vector<unsigned int> >& old_list, const int& prime_number)
+  std::vector<std::vector<int> > add_layer(std::vector<std::vector<int> >& old_list, const int& prime_number)
   {
-    std::vector<std::vector<unsigned int> > result;
+    std::vector<std::vector<int> > result;
     result.resize(old_list.size()*prime_number);
 
-    unsigned int l{0};
-    for(unsigned int i=0; i<old_list.size(); i++)
+    int l{0};
+    for(int i=0; i<old_list.size(); i++)
     {
-      for(unsigned int j=0; j<prime_number; j++)
+      for(int j=0; j<prime_number; j++)
       {
         result[l].resize(old_list[0].size() + 1);
 
-        for(unsigned int k=0; k<result[l].size() - 1; k++)
+        for(int k=0; k<result[l].size() - 1; k++)
         {
           result[l][k] = old_list[i][k];
         }

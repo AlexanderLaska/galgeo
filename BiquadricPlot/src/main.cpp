@@ -58,18 +58,18 @@ int main(int argc, char *argv[]) {
   for(int x{0}; x<primeNumber+1; ++x) {
     for(int y{0}; y<primeNumber+1; ++y) {
       if(((x*x)*m11 + 2*((y*x)*m12) + (y*y)*m22 + one) == zero) {
-        GaloisScalar x_sq{x*x}, y_sq{y*y};
+        GaloisScalar x_sq{x}, y_sq{y};
         q << x_sq << "\t" << y_sq << std::endl;
       }
       if(((x*x)*m11 + 2*((y*x)*m12) + (y*y)*m22 + nonSquares[std::atoi(argv[5])]) == zero) {
-        GaloisScalar x_sq{x*x}, y_sq{y*y};
+        GaloisScalar x_sq{x}, y_sq{y};
         q_bar << x_sq << "\t" << y_sq << std::endl;
       }
       if(((x*x)*m11 + 2*((y*x)*m12) + (y*y)*m22 + nonSquares[std::atoi(argv[6])]) == zero) {
-        GaloisScalar x_sq{x*x}, y_sq{y*y};
+        GaloisScalar x_sq{x}, y_sq{y};
         q_bar2 << x_sq << "\t" << y_sq << std::endl;
       }
-      background << x << "\t" << y << std::endl;
+      background << x-squaresCardinality << "\t" << y-squaresCardinality << std::endl;
     }
   }
 

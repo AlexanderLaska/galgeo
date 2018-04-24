@@ -68,7 +68,7 @@ namespace galgeo
   std::vector<GaloisZeroOneTensor> set_of_hyperplanes(std::vector<GaloisOneZeroTensor>& points);
 
   // Adds a layer of GaloisScalars (cartesian product of a given old_list with the Galois field)
-  std::vector<std::vector<unsigned int> > add_layer(std::vector<std::vector<unsigned int> >& old_list, const int& prime_number);
+  std::vector<std::vector<int> > add_layer(std::vector<std::vector<int> >& old_list, const int& prime_number);
 }
 
 #endif

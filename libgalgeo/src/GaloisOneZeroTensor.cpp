@@ -44,7 +44,7 @@ namespace galgeo
     return *this;
   }
 
-  GaloisOneZeroTensor& GaloisOneZeroTensor::operator=(const std::vector<unsigned int>& rhs)
+  GaloisOneZeroTensor& GaloisOneZeroTensor::operator=(const std::vector<int>& rhs)
   {
     // ...and fill it with the values of the assigned vector 
     for(unsigned int i=0; i<dimension; i++)
@@ -78,9 +78,17 @@ namespace galgeo
 
   bool GaloisOneZeroTensor::operator==(const std::vector<int>& rhs)
   {
+    GaloisOneZeroTensor _rhs;
+    _rhs = rhs;
+    _rhs.norm();
+
+    GaloisOneZeroTensor _lhs{*this};
+    _lhs.norm();
+
     for(unsigned int i=0; i<dimension; i++)
     {
-      if(rhs[i] != this->components[i])
+      if(_lhs.components[i] != _rhs.components[i])
+      //if(this->components[i] != _rhs.components[i])
       {
         return false;
       }
